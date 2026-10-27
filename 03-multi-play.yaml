@@ -5,3 +5,21 @@
   - name: PLAY-1 and TASK-1
     debug:
      msg: "Hello  from PLAY-1 TASK-1 "
+  
+  
+- name: PLAY-1 and TASK-2
+  debug:
+   msg: "HEllo from PLAY-1 TASK-2"
+
+
+- name: PLAY-2
+  hosts: local
+  connection: local
+  tasks:
+- name: PLAY-2 and TASK-2
+  debug:
+   mag: "Hello PLAY-2 TASK-1"
+
+- name: Hello PLAY-2 and TASK-2
+  debug:
+   msh: "Hello from PLAY-2 TASK-2"
