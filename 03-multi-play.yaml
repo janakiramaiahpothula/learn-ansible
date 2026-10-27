@@ -4,4 +4,4 @@
   tasks:
   - name: PLAY-1 and TASK-1
     debug:
-    msg: "Hello  from PLAY-1 TASK-1 "
+     msg: "Hello  from PLAY-1 TASK-1 "
