@@ -14,6 +14,6 @@
         state: running
         wait: true
       loop:
-        - Roboshop-Ansible1
-        - Roboshop-Ansible2
-        - Roboshop-Ansible3
+        - Roboshop-MongoDb
+        - Roboshop-Redis
+        - Roboshop-RabbitMQ

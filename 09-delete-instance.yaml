@@ -12,6 +12,7 @@
             - Roboshop-Ansible1
             - Roboshop-Ansible2
             - Roboshop-Ansible3
+            - Roboshop-Ansible4
       register: roboshop_instances
 
     - name: Display instances selected for deletion
