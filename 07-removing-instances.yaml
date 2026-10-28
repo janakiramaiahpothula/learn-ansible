@@ -1,0 +1,14 @@
+- name: Delete multiple AWS EC2 instances
+  hosts: local
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Terminate multiple EC2 instances
+      amazon.aws.ec2_instance:
+        region: us-east-1
+        instance_ids:
+          - i-005dcdf0007d064bc
+          - i-0218bfec87a2bb6ce
+        state: absent
+        wait: true
