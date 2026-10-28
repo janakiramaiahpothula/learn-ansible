@@ -1,0 +1,25 @@
+- name: Create AWS EC2 instance
+  hosts: local
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Launch EC2 instance
+      amazon.aws.ec2_instance:
+        name: "My-Ansible-EC2"
+        region: us-east-1c
+        image_id: ami-0055977a6e828a4f4
+        instance_type: t3.micro
+        security_group: sg-0f87a6e45d9cdd34d
+        network_interfaces:
+          - assign_public_ip: true
+        tags:
+          Environment: Testing
+          CreatedBy: Ansible
+        state: running
+        wait: true
+      register: ec2_result
+
+    - name: Display EC2 instance details
+      ansible.builtin.debug:
+        var: ec2_result.instances
