@@ -1,0 +1,19 @@
+- name: Create Roboshop EC2 instances
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Create multiple Roboshop instances
+      amazon.aws.ec2_instance:
+        name: "{{ item }}"
+        region: us-east-1
+        image_id: ami-0055977a6e828a4f4
+        instance_type: t3.micro
+        security_group: sg-0f87a6e45d9cdd34d
+        state: running
+        wait: true
+      loop:
+        - Roboshop-Ansible1
+        - Roboshop-Ansible2
+        - Roboshop-Ansible3
