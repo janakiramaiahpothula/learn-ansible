@@ -1,0 +1,15 @@
+- name: Create AWS EC2 instance
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Launch EC2 instance
+      amazon.aws.ec2_instance:
+        name: My-EC2-Instance
+        region: ap-east-1
+        image_id: ami-0055977a6e828a4f4
+        instance_type: t3.micro
+        security_group: sg-0f87a6e45d9cdd34d
+        state: running
+        wait: true
