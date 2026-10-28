@@ -1,15 +1,25 @@
-- name: Create AWS EC2 instance
-  hosts: local
+
+---
+- name: Create a normal EC2 instance
+  hosts: localhost
   connection: local
   gather_facts: false
 
   tasks:
     - name: Launch EC2 instance
       amazon.aws.ec2_instance:
-        name: My-EC2-Instance
-        region: ap-east-1
-        image_id: ami-0055977a6e828a4f4
+        name: roboshop-ansible
+        region: us-east-1c
         instance_type: t3.micro
-        security_group: sg-0f87a6e45d9cdd34d
-        state: running
+        image_id: ami-0055977a6e828a4f4
+        security_group: default
+        count: 1
+        network_interfaces:
+          - assign_public_ip: true
         wait: true
+        state: present
+      register: ec2_result
+
+    - name: Display instance details
+      ansible.builtin.debug:
+        var: ec2_result.instances
