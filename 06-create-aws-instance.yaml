@@ -1,16 +1,18 @@
-- name: Create a normal EC2 instance
+- name: Create AWS instance with ansible
   hosts: local
   connection: local
   gather_facts: false
 
   tasks:
-    - name: Launch EC2 instance
-      amazon.aws.ec2_instance:
-        name: Roboshop-ansible2
+     - name: Launch EC2 instance
+       amazon.aws.ec2_instance:
+        name: Robosho-Ansible
         region: us-east-1
         instance_type: t3.micro
+        count: 3
         image_id: ami-0055977a6e828a4f4
-        security_groups:
-          - sg-0f87a6e45d9cdd34d
+        security_group: sg-0f87a6e45d9cdd34d
         state: present
+
+
       
