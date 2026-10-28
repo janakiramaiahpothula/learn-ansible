@@ -5,10 +5,13 @@
 
   tasks:
     - name: Terminate multiple EC2 instances
-      amazon.aws.ec2_instance:
+      amazon.aws.ec2_instance_info:
         region: us-east-1
-        instance_ids:
-          - i-005dcdf0007d064bc
-          - i-0218bfec87a2bb6ce
-        state: absent
-        wait: true
+        filters:
+            "tag:NAME":
+                - Roboshop-Ansible1
+                - Roboshop-Ansible2
+                - Roboshop-Ansible3
+
+      state: absent
+      wait: true
