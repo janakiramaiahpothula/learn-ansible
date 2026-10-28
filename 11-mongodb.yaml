@@ -1,5 +1,5 @@
 - name: Install and configure MongoDB for RoboShop
-  hosts: mongo
+  hosts: local
   become: true
   gather_facts: false
 
