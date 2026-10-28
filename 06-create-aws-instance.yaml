@@ -12,9 +12,8 @@
         region: us-east-1
         instance_type: t3.micro
         image_id: ami-0055977a6e828a4f4
-        key_name: sg-0f87a6e45d9cdd34d
         security_groups:
-          - default
+          - sg-0f87a6e45d9cdd34d
         count: 1
         wait: true
         state: present
