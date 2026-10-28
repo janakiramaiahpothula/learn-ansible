@@ -1,5 +1,5 @@
 - name: Create AWS EC2 instance
-  hosts: localhost
+  hosts: local
   connection: local
   gather_facts: false
 
