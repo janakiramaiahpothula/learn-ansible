@@ -1,0 +1,30 @@
+- name: Delete Roboshop EC2 instances automatically
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Find Roboshop EC2 instances by Name tag
+      amazon.aws.ec2_instance_info:
+        region: us-east-1
+        filters:
+          "tag:Name":
+            - Roboshop-Ansible1
+            - Roboshop-Ansible2
+            - Roboshop-Ansible3
+      register: roboshop_instances
+
+    - name: Display instances selected for deletion
+      ansible.builtin.debug:
+        msg: "{{ item.tags.Name }} - {{ item.instance_id }}"
+      loop: "{{ roboshop_instances.instances }}"
+
+    - name: Terminate the selected EC2 instances
+      amazon.aws.ec2_instance:
+        region: us-east-1
+        instance_ids:
+          - "{{ item.instance_id }}"
+        state: absent
+        wait: true
+      loop: "{{ roboshop_instances.instances }}"
+      when: roboshop_instances.instances | length > 0
