@@ -3,6 +3,6 @@
   hosts: local
   become: yes
   tasks:
-- name: create user
-  user:
-   name: roboshop #useradd roboshop 
+  - name: create user
+    user:
+     name: roboshop #useradd roboshop 
